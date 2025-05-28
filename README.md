@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Aplicación React con Sistema de Login
 
 Una aplicación React moderna construida con Vite que implementa un sistema de login simple con rutas protegidas.
@@ -109,3 +110,6 @@ Para expandir la aplicación, puedes:
 3. **Implementar backend real** para autenticación
 4. **Agregar Context API** para manejo de estado global
 5. **Integrar librerías de UI** como Material-UI o Chakra UI
+=======
+# MAWISONET
+>>>>>>> e9430fbc239d990497ab818a8cc93a036b6954ee
