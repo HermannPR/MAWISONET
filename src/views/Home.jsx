@@ -4,51 +4,49 @@ import { Box, Typography, Button } from '@mui/material';
 const Home = ({ user }) => {
   const [counter, setCounter] = useState(0);
 
+  const handleMessage = () => {
+    alert(`El contador vale: ${counter}`);
+  };
+
+  const handleSave = () => {
+    console.log('Guardado el valor del contador:', counter);
+  };
+
   return (
-    <Box sx={{ padding: 4 }} className="home-container">
-      <div className="welcome-section">
-        <Typography variant="h4" gutterBottom>
-          ¡Bienvenido, {user}!
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Este es un ejemplo de un párrafo con una variable dinámica:
-        </Typography>
-        <Typography variant="h6" color="primary" gutterBottom>
-          Contador: {counter}
-        </Typography>
+    <Box sx={{ p: 4, textAlign: 'center' }} className="home-container">
+      <Typography variant="h5" gutterBottom>
+        ¡Bienvenido, {user}!
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 2 }}>
         <Button
           variant="contained"
-          color="secondary"
-          onClick={() => setCounter(counter + 1)}
+          color="primary"
+          onClick={() => setCounter((c) => c + 1)}
         >
-          Incrementar Contador
+          Sumar
         </Button>
-      </div>
-      
-      <div className="content-section">
-        <h2>Panel Principal</h2>
-        <div className="cards-container">
-          <div className="info-card">
-            <h3>📊 Dashboard</h3>
-            <p>Accede a tus estadísticas y métricas principales.</p>
-          </div>
-          
-          <div className="info-card">
-            <h3>👤 Perfil</h3>
-            <p>Gestiona tu información personal y configuración.</p>
-          </div>
-          
-          <div className="info-card">
-            <h3>🔧 Configuración</h3>
-            <p>Personaliza tu experiencia en la aplicación.</p>
-          </div>
-          
-          <div className="info-card">
-            <h3>📝 Actividad Reciente</h3>
-            <p>Revisa tus últimas acciones y notificaciones.</p>
-          </div>
-        </div>
-      </div>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setCounter((c) => c - 1)}
+        >
+          Restar
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleMessage}
+        >
+          Mensaje
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSave}
+        >
+          Guardar
+        </Button>
+      </Box>
     </Box>
   );
 };

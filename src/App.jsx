@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Toolbar } from '@mui/material'
 import './App.css'
 
 // Componentes
@@ -30,6 +31,7 @@ function App() {
         {isLogin ? (
           <>
             <AppBar user={user} logout={logout} />
+            <Toolbar /> {/* Añade espacio igual a la altura del AppBar */}
             <main className="main-content">
               <Routes>
                 <Route path="/" element={<Home user={user} />} />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { TextField, Button, Box, Typography, Paper } from '@mui/material';
+import { TextField, Button, Box, Typography, Paper, CircularProgress, Alert } from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 const Login = ({ login }) => {
   const [user, setUser] = useState('');
@@ -11,25 +12,19 @@ const Login = ({ login }) => {
     e.preventDefault();
     setLoading(true);
     setError('');
-
     try {
       const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user, password }),
       });
-
       const data = await response.json();
-      
       if (data.isLogin) {
         login(user);
       } else {
         setError('Credenciales incorrectas');
       }
     } catch (err) {
-      // Simulación del backend para propósitos de demostración
       if (user === 'admin' && password === 'admin') {
         login(user);
       } else {
@@ -43,49 +38,96 @@ const Login = ({ login }) => {
   return (
     <Box
       sx={{
+        minHeight: '100vh',
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
+        justifyContent: 'center',
         background: 'linear-gradient(135deg, #646cff, #535bf2)',
       }}
     >
-      <Paper elevation={3} sx={{ padding: 4, maxWidth: 400, width: '100%' }}>
-        <Typography variant="h4" align="center" gutterBottom>
+      <Paper
+        elevation={6}
+        sx={{
+          p: 4,
+          maxWidth: 360,
+          width: '100%',
+          borderRadius: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <LockOutlinedIcon color="primary" sx={{ fontSize: 48, mb: 1 }} />
+        <Typography
+          variant="h5"
+          component="h1"
+          fontWeight={700}
+          mb={2}
+          align="center"
+        >
           Iniciar Sesión
         </Typography>
-        <form onSubmit={handleSubmit}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <TextField
-              label="Usuario"
-              variant="outlined"
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-              required
-            />
-            <TextField
-              label="Contraseña"
-              type="password"
-              variant="outlined"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            {error && (
-              <Typography color="error" align="center">
-                {error}
-              </Typography>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{ width: '100%' }}
+        >
+          <TextField
+            label="Usuario"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+            autoFocus
+            required
+          />
+          <TextField
+            label="Contraseña"
+            type="password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          {error && (
+            <Alert severity="error" sx={{ mt: 2 }}>
+              {error}
+            </Alert>
+          )}
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{
+              mt: 3,
+              mb: 1,
+              py: 1.2,
+              fontWeight: 600,
+              fontSize: '1rem',
+            }}
+            disabled={loading}
+            size="large"
+          >
+            {loading ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              'Iniciar Sesión'
             )}
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              disabled={loading}
-            >
-              {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
-            </Button>
-          </Box>
-        </form>
+          </Button>
+        </Box>
+        <Box mt={2} textAlign="center">
+          <Typography variant="body2" color="text.secondary">
+            <strong>Credenciales de prueba:</strong>
+            <br />
+            Usuario: admin
+            <br />
+            Contraseña: admin
+          </Typography>
+        </Box>
       </Paper>
     </Box>
   );
