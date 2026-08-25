@@ -111,3 +111,7 @@ Para expandir la aplicación, puedes:
 3. **Implementar backend real** para autenticación
 4. **Agregar Context API** para manejo de estado global
 5. **Mejorar UI/UX** con más componentes de Material-UI
+
+## Screenshots
+
+![MAWISONET — página de login](docs/screenshot.png)
