@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# Aplicación React con Sistema de Login
+# MAWISONET - Aplicación React con Sistema de Login
 
 Una aplicación React moderna construida con Vite que implementa un sistema de login simple con rutas protegidas.
 
@@ -7,16 +6,17 @@ Una aplicación React moderna construida con Vite que implementa un sistema de l
 
 - **Sistema de Login**: Autenticación simple con credenciales de prueba
 - **Rutas Protegidas**: Navegación basada en estado de autenticación
-- **UI Moderna**: Diseño responsivo con componentes reutilizables
+- **UI Moderna**: Diseño responsivo con Material-UI
 - **React Router**: Navegación SPA (Single Page Application)
 - **Estado Local**: Gestión de estado con React Hooks
 
 ## 🛠️ Tecnologías
 
-- **Frontend**: React 18 + Vite
-- **Routing**: React Router DOM
-- **Estilos**: CSS3 con variables personalizadas
-- **Estado**: useState (React Hooks)
+- **Frontend**: React 19.1.0 + Vite 6.3.5
+- **UI Library**: Material-UI (MUI) 7.1.0
+- **Routing**: React Router DOM 7.6.1
+- **Estilos**: CSS personalizado + MUI components
+- **Estado**: useState hooks (local state)
 
 ## 📁 Estructura del Proyecto
 
@@ -61,18 +61,19 @@ Para acceder a la aplicación, utiliza:
 ## 🎯 Funcionalidades
 
 ### Sistema de Login
-- Formulario de autenticación con validación
+- Formulario de autenticación con validación usando Material-UI
 - Manejo de errores y estados de carga
 - Simulación de backend (puede conectarse a API real)
 
 ### Área Protegida
-- Barra de navegación con información del usuario
-- Dashboard con tarjetas informativas
+- Barra de navegación con menú hamburguesa y perfil de usuario
+- Dashboard con botones interactivos para contador
 - Opción de cerrar sesión
 
 ### Responsive Design
 - Adaptable a dispositivos móviles y desktop
 - Tema claro/oscuro automático según preferencias del sistema
+- Componentes Material-UI totalmente responsivos
 
 ## 🔧 Backend Simulado
 
@@ -109,7 +110,4 @@ Para expandir la aplicación, puedes:
 2. **Crear nuevos componentes** en `src/components/`
 3. **Implementar backend real** para autenticación
 4. **Agregar Context API** para manejo de estado global
-5. **Integrar librerías de UI** como Material-UI o Chakra UI
-=======
-# MAWISONET
->>>>>>> e9430fbc239d990497ab818a8cc93a036b6954ee
+5. **Mejorar UI/UX** con más componentes de Material-UI
